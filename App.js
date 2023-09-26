@@ -18,9 +18,9 @@ export default function App() {
   }
 
   function onHandler() {
-    if(text !== ''){
+    if (text !== "") {
       setGoalList([...goalList, text]);
-    setText("");
+      setText("");
     }
   }
 
@@ -44,7 +44,11 @@ export default function App() {
         <Text style={styles.goalText}>Your Goals</Text>
         <ScrollView>
           {goalList.map((item, index) => (
-            <Pressable onPress={() => onDelete(index)} key={index}>
+            <Pressable
+              style={({pressed}) => pressed ? styles.effect : null}
+              onPress={() => onDelete(index)}
+              key={index}
+            >
               <Text style={styles.goalList}>
                 {index + 1} . {item}
               </Text>
@@ -86,11 +90,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   goalList: {
-    marginTop: 5,
+    margin: 5,
     padding: 5,
-    backgroundColor: "#EB984E",
+    backgroundColor: "#5D6D7E",
     color: "white",
     borderRadius: 3,
     fontSize: 16,
   },
+  effect : {
+    backgroundColor: "#34495E",
+    borderRadius : 5
+  }
 });
